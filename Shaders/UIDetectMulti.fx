@@ -9,8 +9,19 @@
 // there for a full description and usage of this shader.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+//Requirements
 #include "ReShadeUI.fxh"
+#include "ReShade.fxh"
+#include "UIDetectMulti.fxh"
+#include "DrawText.fxh"
 
+//Reshade.fxh version independence
+#undef BUFFER_PIXEL_SIZE
+#define BUFFER_PIXEL_SIZE float2(BUFFER_RCP_WIDTH, BUFFER_RCP_HEIGHT)
+texture texBackBuffer : COLOR;
+sampler BackBuffer { Texture = texBackBuffer; };
+
+//Sliders
 uniform float toleranceR < __UNIFORM_SLIDER_FLOAT1
 	ui_label = "Red Color Tolerance";
 	ui_category = "Color Tolerances";
@@ -53,15 +64,6 @@ uniform float toleranceB < __UNIFORM_SLIDER_FLOAT1
 		ui_category = "Pixel Selection";
 	> = true;
 #endif
-
-#include "ReShade.fxh"
-#include "UIDetectMulti.fxh"
-#include "DrawText.fxh"
-
-#undef BUFFER_PIXEL_SIZE
-#define BUFFER_PIXEL_SIZE float2(BUFFER_RCP_WIDTH, BUFFER_RCP_HEIGHT)
-texture texBackBuffer : COLOR;
-sampler BackBuffer { Texture = texBackBuffer; };
 
 //textures and samplers
 texture texColorBeforeMulti { Width = BUFFER_WIDTH; Height = BUFFER_HEIGHT; };
@@ -109,6 +111,7 @@ sampler UIDetectMulti { Texture = texUIDetectMulti; };
 #endif
 
 //pixel shaders
+//UIDetectMulti
 #if (UIDM_DIAGNOSTICS == 1)
 	float4 State_Pixel_Color(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 	{
@@ -210,7 +213,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		if (UIPixelCoord_UINr[i].z == 1){uinumber = i; break;}
 	}
 
-    for (int i=0; i < 3; i++){
+	for (int i=0; i < 3; i++){
 		pixelCoord = UIPixelCoord_UINr[uinumber].xy * BUFFER_PIXEL_SIZE;
 		pixelColor = round(tex2Dlod(BackBuffer, float4(pixelCoord, 0, 0)).rgb * 255);
 		uiPixelColor = UIPixelRGB[uinumber].rgb;
@@ -472,12 +475,16 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		return float4(uicolors, 1);
 	}
 #endif
+//end of UIDetectMulti Pixel shader
 
+//UIDetectMulti_Before
 float4 PS_StoreColor(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
     return tex2D(BackBuffer, texcoord);
 }
+//end of UIDetectMulti_Before Pixel shader
 
+//UIDetectMulti_After
 float4 PS_RestoreColor(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 {
 	#if (UIDM_INVERT == 0)
@@ -575,8 +582,7 @@ float4 PS_RestoreColor5(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 	return float4(color, 1.0);
 }
 #endif
-
-
+//End of UIDetectMulti_After Pixel shader
 
 //techniques
 technique UIDetectMulti
