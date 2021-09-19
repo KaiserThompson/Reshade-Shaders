@@ -1,19 +1,15 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// UIDetect by brussell
-// v. 2.1.0
-// License: CC BY 4.0
-//
-// Multi-Mask Variant By Kaiser
+// 
+// UIDetectMulti By Kaiser
 // v. 1.5.0
 // License: CC By 4.0
+// Based on work from Brussels1
 //
-// UIDetect is configured via the file UIDetectMulti.fxh. Please look
+// UIDetectMulti is configured via the file UIDetectMulti.fxh. Please look
 // there for a full description and usage of this shader.
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #include "ReShadeUI.fxh"
-
-
 
 uniform float toleranceR < __UNIFORM_SLIDER_FLOAT1
 	ui_label = "Red Color Tolerance";
