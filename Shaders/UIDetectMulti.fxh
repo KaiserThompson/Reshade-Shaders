@@ -44,6 +44,10 @@ UIPixelRGB[PIXELNUMBER]         //the UI pixels RGB values and UI number
 	#define UIDM_DIAGNOSTICS	0		// [0 or 1] 1 turns on the crosshair and color measurements on screen
 #endif							// 0 turns off the effects
 
+#ifndef UIDM_ANTIBLOOM
+	#define UIDM_ANTIBLOOM		0		// [0 or 1] 0 allows for 3x better performance of UIDetectMulti_before
+#endif							// 1 makes the screen behind the masks black to prevent bloom bleed
+
 #define PIXELNUMBER 			1		// [The number of entries in the list below]
 
 static const float3 UIPixelCoord_UINr[PIXELNUMBER]=
