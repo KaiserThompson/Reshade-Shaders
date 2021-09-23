@@ -497,9 +497,9 @@ float4 PS_RestoreColor(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : S
 	float3 uiMask = tex2D(UIDetectMaskMulti, texcoord).rgb;
 	float3 mask;
 	float3 ui = tex2D(UIDetectMulti, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);}
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);}
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);}
+	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 1
+	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 2
+	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 3
 	return float4(color, 1.0);
 }
 
@@ -516,9 +516,9 @@ float4 PS_RestoreColor2(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 	float3 uiMask = tex2D(UIDetectMaskMulti2, texcoord).rgb;
 	float3 mask;
 	float3 ui = tex2D(UIDetectMulti2, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);}
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);}
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);}
+	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 4
+	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 5
+	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 6
 	return float4(color, 1.0);
 }
 #endif
@@ -536,9 +536,9 @@ float4 PS_RestoreColor3(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 	float3 uiMask = tex2D(UIDetectMaskMulti3, texcoord).rgb;
 	float3 mask;
 	float3 ui = tex2D(UIDetectMulti3, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);}
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);}
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);}
+	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 7
+	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 8
+	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 9
 	return float4(color, 1.0);
 }
 #endif
@@ -556,9 +556,9 @@ float4 PS_RestoreColor4(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 	float3 uiMask = tex2D(UIDetectMaskMulti4, texcoord).rgb;
 	float3 mask;
 	float3 ui = tex2D(UIDetectMulti4, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);}
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);}
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);}
+	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 10
+	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 11
+	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 12
 	return float4(color, 1.0);
 }
 #endif
@@ -576,9 +576,9 @@ float4 PS_RestoreColor5(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 	float3 uiMask = tex2D(UIDetectMaskMulti5, texcoord).rgb;
 	float3 mask;
 	float3 ui = tex2D(UIDetectMulti5, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);}
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);}
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);}
+	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 13
+	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 14
+	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 15
 	return float4(color, 1.0);
 }
 #endif
