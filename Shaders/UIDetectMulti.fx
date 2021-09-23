@@ -500,88 +500,40 @@ float4 PS_RestoreColor(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : S
 	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 1
 	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 2
 	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 3
-	return float4(color, 1.0);
-}
-
-#if (UIDM_MASK_COUNT > 1)
-float4 PS_RestoreColor2(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
-{
-	#if (UIDM_INVERT == 0)
-		float3 colorOrig = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 color = tex2D(BackBuffer, texcoord).rgb;
-	#else
-		float3 color = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 colorOrig = tex2D(BackBuffer, texcoord).rgb;
+	#if (UIDM_MASK_COUNT > 1)
+		float3 uiMask2 = tex2D(UIDetectMaskMulti2, texcoord).rgb;
+		float3 mask2;
+		float3 ui2 = tex2D(UIDetectMulti2, float2(0,0)).rgb;
+		if (ui2.r == 0)	{mask2 = uiMask2.r;	color = lerp(colorOrig, color, mask2);} //UINr 4
+		if (ui2.g == 0)	{mask2 = uiMask2.g;	color = lerp(colorOrig, color, mask2);} //UINr 5
+		if (ui2.b == 0)	{mask2 = uiMask2.b;	color = lerp(colorOrig, color, mask2);} //UINr 6
 	#endif
-	float3 uiMask = tex2D(UIDetectMaskMulti2, texcoord).rgb;
-	float3 mask;
-	float3 ui = tex2D(UIDetectMulti2, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 4
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 5
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 6
-	return float4(color, 1.0);
-}
-#endif
-
-#if (UIDM_MASK_COUNT > 2)
-float4 PS_RestoreColor3(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
-{
-	#if (UIDM_INVERT == 0)
-		float3 colorOrig = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 color = tex2D(BackBuffer, texcoord).rgb;
-	#else
-		float3 color = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 colorOrig = tex2D(BackBuffer, texcoord).rgb;
+	#if (UIDM_MASK_COUNT > 2)
+		float3 uiMask3 = tex2D(UIDetectMaskMulti3, texcoord).rgb;
+		float3 mask3;
+		float3 ui3 = tex2D(UIDetectMulti3, float2(0,0)).rgb;
+		if (ui3.r == 0)	{mask3 = uiMask3.r;	color = lerp(colorOrig, color, mask3);} //UINr 7
+		if (ui3.g == 0)	{mask3 = uiMask3.g;	color = lerp(colorOrig, color, mask3);} //UINr 8
+		if (ui3.b == 0)	{mask3 = uiMask3.b;	color = lerp(colorOrig, color, mask3);} //UINr 9
 	#endif
-	float3 uiMask = tex2D(UIDetectMaskMulti3, texcoord).rgb;
-	float3 mask;
-	float3 ui = tex2D(UIDetectMulti3, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 7
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 8
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 9
-	return float4(color, 1.0);
-}
-#endif
-
-#if (UIDM_MASK_COUNT > 3)
-float4 PS_RestoreColor4(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
-{
-	#if (UIDM_INVERT == 0)
-		float3 colorOrig = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 color = tex2D(BackBuffer, texcoord).rgb;
-	#else
-		float3 color = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 colorOrig = tex2D(BackBuffer, texcoord).rgb;
+	#if (UIDM_MASK_COUNT > 3)
+		float3 uiMask4 = tex2D(UIDetectMaskMulti4, texcoord).rgb;
+		float3 mask4;
+		float3 ui4 = tex2D(UIDetectMulti4, float2(0,0)).rgb;
+		if (ui4.r == 0)	{mask4 = uiMask4.r;	color = lerp(colorOrig, color, mask4);} //UINr 10
+		if (ui4.g == 0)	{mask4 = uiMask4.g;	color = lerp(colorOrig, color, mask4);} //UINr 11
+		if (ui4.b == 0)	{mask4 = uiMask4.b;	color = lerp(colorOrig, color, mask4);} //UINr 12
 	#endif
-	float3 uiMask = tex2D(UIDetectMaskMulti4, texcoord).rgb;
-	float3 mask;
-	float3 ui = tex2D(UIDetectMulti4, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 10
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 11
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 12
-	return float4(color, 1.0);
-}
-#endif
-
-#if (UIDM_MASK_COUNT > 4)
-float4 PS_RestoreColor5(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
-{
-	#if (UIDM_INVERT == 0)
-		float3 colorOrig = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 color = tex2D(BackBuffer, texcoord).rgb;
-	#else
-		float3 color = tex2D(ColorBeforeMulti, texcoord).rgb;
-		float3 colorOrig = tex2D(BackBuffer, texcoord).rgb;
+	#if (UIDM_MASK_COUNT > 4)
+		float3 uiMask5 = tex2D(UIDetectMaskMulti5, texcoord).rgb;
+		float3 mask5;
+		float3 ui5 = tex2D(UIDetectMulti5, float2(0,0)).rgb;
+		if (ui5.r == 0)	{mask5 = uiMask5.r;	color = lerp(colorOrig, color, mask5);} //UINr 13
+		if (ui5.g == 0)	{mask5 = uiMask5.g;	color = lerp(colorOrig, color, mask5);} //UINr 14
+		if (ui5.b == 0)	{mask5 = uiMask5.b;	color = lerp(colorOrig, color, mask5);} //UINr 15
 	#endif
-	float3 uiMask = tex2D(UIDetectMaskMulti5, texcoord).rgb;
-	float3 mask;
-	float3 ui = tex2D(UIDetectMulti5, float2(0,0)).rgb;
-	if (ui.r == 0)	{mask = uiMask.r;	color = lerp(colorOrig, color, mask);} //UINr 13
-	if (ui.g == 0)	{mask = uiMask.g;	color = lerp(colorOrig, color, mask);} //UINr 14
-	if (ui.b == 0)	{mask = uiMask.b;	color = lerp(colorOrig, color, mask);} //UINr 15
 	return float4(color, 1.0);
 }
-#endif
 //End of UIDetectMulti_After Pixel shader
 
 //techniques
@@ -662,39 +614,10 @@ technique UIDetectMulti_Before {
 
 technique UIDetectMulti_After
 {
-    pass {
-        VertexShader = PostProcessVS;
-        PixelShader = PS_RestoreColor;
-    }
-	
-	#if (UIDM_MASK_COUNT > 1)
-		pass {
-			VertexShader = PostProcessVS;
-			PixelShader = PS_RestoreColor2;
-		}
-	#endif
-	
-	#if (UIDM_MASK_COUNT > 2)
-		pass {
-			VertexShader = PostProcessVS;
-			PixelShader = PS_RestoreColor3;
-		}
-	#endif
-	
-	#if (UIDM_MASK_COUNT > 3)
-		pass {
-			VertexShader = PostProcessVS;
-			PixelShader = PS_RestoreColor4;
-		}
-	#endif
-	
-	#if (UIDM_MASK_COUNT > 4)
-		pass {
-			VertexShader = PostProcessVS;
-			PixelShader = PS_RestoreColor5;
-		}
-	#endif
-	
+	pass {
+		VertexShader = PostProcessVS;
+		PixelShader = PS_RestoreColor;
+	}
 	#if (UIDM_DIAGNOSTICS == 1)
 		pass {
 			VertexShader = PostProcessVS;
