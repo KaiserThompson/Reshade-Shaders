@@ -210,6 +210,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 	#endif
 	
 	for (int i=0; i < PIXELNUMBER; i++){
+		if (i == PIXELNUMBER){break;}
 		if (UIPixelCoord_UINr[i].z == 1){uinumber = i; break;}
 	}
 
@@ -236,6 +237,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		if (uinumber < PIXELNUMBER - 1){
 			if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 		}
+		if (i == PIXELNUMBER){return float4(uicolors, 1);}
 		if (i == 3) {return float4(uicolors, 1);};
 		uinumber += 1;
 	}
@@ -260,6 +262,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		#endif
 		
 		for (int i=0; i < PIXELNUMBER; i++){
+			if (i == PIXELNUMBER){break;}
 			if (UIPixelCoord_UINr[i].z == 4){uinumber = i; break;}
 		}  
 	
@@ -286,6 +289,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
+			if (i == PIXELNUMBER){return float4(uicolors, 1);}
 			if (i == 3) {return float4(uicolors, 1);};
 			uinumber += 1;
 		}
@@ -311,6 +315,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		#endif
 	
 		for (int i=0; i < PIXELNUMBER; i++){
+			if (i == PIXELNUMBER){break;}
 			if (UIPixelCoord_UINr[i].z == 7){uinumber = i; break;}
 		}
 	
@@ -337,6 +342,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
+			if (i == PIXELNUMBER){return float4(uicolors, 1);}
 			if (i == 3) {return float4(uicolors, 1);};
 			uinumber += 1;
 		}
@@ -362,6 +368,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		#endif
 	
 		for (int i=0; i < PIXELNUMBER; i++){
+			if (i == PIXELNUMBER){break;}
 			if (UIPixelCoord_UINr[i].z == 10){uinumber = i; break;}
 		}
 	
@@ -388,6 +395,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
+			if (i == PIXELNUMBER){return float4(uicolors, 1);}
 			if (i == 3) {return float4(uicolors, 1);};
 			uinumber += 1;
 		}
@@ -413,6 +421,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 		#endif
 		
 		for (int i=0; i < PIXELNUMBER; i++){
+			if (i == PIXELNUMBER){break;}
 			if (UIPixelCoord_UINr[i].z == 13){uinumber = i; break;}
 		}
 	
@@ -439,6 +448,7 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
+			if (i == PIXELNUMBER){return float4(uicolors, 1);}
 			if (i == 3) {return float4(uicolors, 1);};
 			uinumber += 1;
 		}
