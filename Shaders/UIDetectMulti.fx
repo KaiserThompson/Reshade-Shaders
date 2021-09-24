@@ -428,7 +428,7 @@ uniform float FD3 < __UNIFORM_SLIDER_FLOAT1
 		ui_min = 0; ui_max = BUFFER_WIDTH;
 		ui_step = 1;
 	> = 100;
-	
+
 	uniform float fPixelPosY < __UNIFORM_SLIDER_FLOAT1
 		ui_label = "Pixel Y-Position";
 		ui_category = "Pixel Selection";
@@ -437,6 +437,14 @@ uniform float FD3 < __UNIFORM_SLIDER_FLOAT1
 		ui_step = 1;
 	> = 100;
 	
+	uniform float3 CrossColor < __UNIFORM_COLOR_FLOAT3
+		ui_label = "Crosshair Color";
+		ui_category = "Pixel Selection";
+		ui_category_closed = true;
+		ui_min = 0; ui_max = 255;
+		ui_step = 1;
+	> = 1;
+
 	uniform bool BlackFont <
 		ui_label = "Font color";
 		ui_tooltip = "Check for Black font, Uncheck for White font";
@@ -542,9 +550,10 @@ sampler UIDetectTimer { Texture = texUIDetectTimer; };
 	float3 Crosshair(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Target
 	{
 		float3 color = 0;
-		float3 crosshair = 1;
+		float3 crosshair = CrossColor;
 		float3 colorOrig = tex2D(BackBuffer, texcoord).rgb;
 		float2 pixelCoord = float2(fPixelPosX, fPixelPosY) * BUFFER_PIXEL_SIZE;
+		float mask;
 		int Xtest = 0;
 		int Ytest = 0;
 		if (abs((texcoord.x / BUFFER_PIXEL_SIZE.x) - (pixelCoord.x / BUFFER_PIXEL_SIZE.x)) < 0.5) Xtest = 1;
@@ -552,7 +561,12 @@ sampler UIDetectTimer { Texture = texUIDetectTimer; };
 		if (Xtest == 1 && Ytest == 1){ Xtest = 0; Ytest = 0;}
 		color = lerp(color, crosshair, Xtest);
 		color = lerp(color, crosshair, Ytest);
-		float mask = color.x;
+		if(CrossColor.x >= CrossColor.y && CrossColor.x >= CrossColor.z) mask = color.x;
+		if(CrossColor.y >= CrossColor.x && CrossColor.y >= CrossColor.z) mask = color.y;
+		if(CrossColor.z >= CrossColor.x && CrossColor.z >= CrossColor.y) mask = color.z;
+		if(CrossColor.x >= CrossColor.y && CrossColor.x <= CrossColor.z) mask = color.z;
+		if(CrossColor.y >= CrossColor.x && CrossColor.y <= CrossColor.z) mask = color.z;
+		if(CrossColor.z >= CrossColor.x && CrossColor.z <= CrossColor.y) mask = color.y;
 		color = lerp(colorOrig, color, mask);
 		return color;
 	}
@@ -567,7 +581,7 @@ sampler UIDetectTimer { Texture = texUIDetectTimer; };
 			color = tex2D(textcolor, texcoord).rgb;
 			mask = saturate(tex2D(textcolor, texcoord).r);
 		}
-		if (BlackFont == FA1lse){
+		if (BlackFont == false){
 			color = tex2D(textcolor2, texcoord).rgb;
 			mask = saturate(1.0 - tex2D(textcolor2, texcoord).r);
 		}
