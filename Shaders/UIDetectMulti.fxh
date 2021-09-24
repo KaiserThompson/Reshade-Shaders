@@ -52,7 +52,7 @@ UIPixelRGB[PIXELNUMBER]         //the UI pixels RGB values and UI number
 
 static const float3 UIPixelCoord_UINr[PIXELNUMBER]=
 {
-	float3(0,0,0),
+	float3(0,0,1),
 };
 
 static const float4 UIPixelRGB[PIXELNUMBER]=
