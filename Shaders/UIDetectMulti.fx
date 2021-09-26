@@ -635,10 +635,10 @@ float4 PS_UIDetect(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 			if (diff.r > tolerance2.r && diff.g > tolerance2.g && diff.b > tolerance2.b && UIPixelCoord_UINr[uinumber].z == 2) uiDetected.y = 0;
 			if (diff.r > tolerance3.r && diff.g > tolerance3.g && diff.b > tolerance3.b && UIPixelCoord_UINr[uinumber].z == 3) uiDetected.z = 0;
 		#endif
+		if (uinumber == PIXELNUMBER){break;}
 		if (uinumber < PIXELNUMBER - 1){
 			if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 		}
-		if (i == PIXELNUMBER){break;}
 		uinumber += 1;
 	}
 	
@@ -710,10 +710,10 @@ float4 PS_UIDetectTimer(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 				if (diff.r > tolerance5.r && diff.g > tolerance5.g && diff.b > tolerance5.b && UIPixelCoord_UINr[uinumber].z == 5) uiDetected.y = 0;
 				if (diff.r > tolerance6.r && diff.g > tolerance6.g && diff.b > tolerance6.b && UIPixelCoord_UINr[uinumber].z == 6) uiDetected.z = 0;
 			#endif
+			if (uinumber == PIXELNUMBER){break;}
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
-			if (i == PIXELNUMBER){break;}
 			uinumber += 1;
 		}
 	
@@ -776,10 +776,10 @@ float4 PS_UIDetectTimer(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 				if (diff.r > tolerance8.r && diff.g > tolerance8.g && diff.b > tolerance8.b && UIPixelCoord_UINr[uinumber].z == 8) uiDetected.y = 0;
 				if (diff.r > tolerance9.r && diff.g > tolerance9.g && diff.b > tolerance9.b && UIPixelCoord_UINr[uinumber].z == 9) uiDetected.z = 0;
 			#endif
+			if (uinumber == PIXELNUMBER){break;}
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
-			if (i == PIXELNUMBER){break;}
 			uinumber += 1;
 		}
 	
@@ -842,10 +842,10 @@ float4 PS_UIDetectTimer(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 				if (diff.r > tolerance11.r && diff.g > tolerance11.g && diff.b > tolerance11.b && UIPixelCoord_UINr[uinumber].z == 11) uiDetected.y = 0;
 				if (diff.r > tolerance12.r && diff.g > tolerance12.g && diff.b > tolerance12.b && UIPixelCoord_UINr[uinumber].z == 12) uiDetected.z = 0;
 			#endif
+			if (uinumber == PIXELNUMBER){break;}
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
-			if (i == PIXELNUMBER){break;}
 			uinumber += 1;
 		}
 	
@@ -908,10 +908,10 @@ float4 PS_UIDetectTimer(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : 
 				if (diff.r > tolerance14.r && diff.g > tolerance14.g && diff.b > tolerance14.b && UIPixelCoord_UINr[uinumber].z == 14) uiDetected.y = 0;
 				if (diff.r > tolerance15.r && diff.g > tolerance15.g && diff.b > tolerance15.b && UIPixelCoord_UINr[uinumber].z == 15) uiDetected.z = 0;
 			#endif
+			if (uinumber == PIXELNUMBER){break;}
 			if (uinumber < PIXELNUMBER - 1){
 				if (UIPixelCoord_UINr[uinumber].z == UIPixelCoord_UINr[uinumber + 1].z){i -= 1;};
 			}
-			if (i == PIXELNUMBER){break;}
 			uinumber += 1;
 		}
 	
