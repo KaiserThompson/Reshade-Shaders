@@ -36,10 +36,6 @@ UIPixelRGB[PIXELNUMBER]         //the UI pixels RGB values and UI number
     #define UIDM_INVERT	        	0		// [0 or 1] Enable Inverted Mode (only show effects where 
 #endif							// UI is visible)
 
-#ifndef UIDM_EVERYPIXEL
-	#define UIDM_EVERYPIXEL		0		// [0 or 1] 0 means that all pixels with same UI value must match, 
-#endif							// 1 means that only 1 pixel must match.
-
 #ifndef UIDM_DIAGNOSTICS
 	#define UIDM_DIAGNOSTICS	0		// [0 or 1] 1 turns on the crosshair and color measurements on screen
 #endif							// 0 turns off the effects
